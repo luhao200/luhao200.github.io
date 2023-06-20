@@ -47,35 +47,6 @@
   </entry>
   
   <entry>
-    <title>hello-world</title>
-    <link href="https://luhao200.github.io/2023/06/14/hello-world/"/>
-    <id>https://luhao200.github.io/2023/06/14/hello-world/</id>
-    <published>2023-06-14T09:07:25.000Z</published>
-    <updated>2023-06-19T16:05:07.275Z</updated>
-    
-    <content type="html"><![CDATA[<p>第一篇文章。<br>say hello。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;第一篇文章。&lt;br&gt;say hello。&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    <category term="其他" scheme="https://luhao200.github.io/categories/%E5%85%B6%E4%BB%96/"/>
-    
-    
-    <category term="体验" scheme="https://luhao200.github.io/tags/%E4%BD%93%E9%AA%8C/"/>
-    
-    <category term="写作" scheme="https://luhao200.github.io/tags/%E5%86%99%E4%BD%9C/"/>
-    
-    <category term="记录" scheme="https://luhao200.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Hello-world</title>
     <link href="https://luhao200.github.io/2023/06/13/%E6%A8%A1%E6%9D%BF%E6%96%87%E7%AB%A0/"/>
     <id>https://luhao200.github.io/2023/06/13/%E6%A8%A1%E6%9D%BF%E6%96%87%E7%AB%A0/</id>
@@ -98,11 +69,11 @@
     <category term="博客" scheme="https://luhao200.github.io/categories/%E5%AD%A6%E4%B9%A0/%E5%8D%9A%E5%AE%A2/"/>
     
     
+    <category term="学习" scheme="https://luhao200.github.io/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
     <category term="写作" scheme="https://luhao200.github.io/tags/%E5%86%99%E4%BD%9C/"/>
     
     <category term="记录" scheme="https://luhao200.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
-    
-    <category term="学习" scheme="https://luhao200.github.io/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   

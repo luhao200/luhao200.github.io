@@ -35,35 +35,6 @@
     
     
     <entry>
-      <title>hello-world</title>
-      <link href="/2023/06/14/hello-world/"/>
-      <url>/2023/06/14/hello-world/</url>
-      
-        <content type="html"><![CDATA[<p>第一篇文章。<br>say hello。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 其他 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 体验 </tag>
-            
-            <tag> 写作 </tag>
-            
-            <tag> 记录 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Hello-world</title>
       <link href="/2023/06/13/%E6%A8%A1%E6%9D%BF%E6%96%87%E7%AB%A0/"/>
       <url>/2023/06/13/%E6%A8%A1%E6%9D%BF%E6%96%87%E7%AB%A0/</url>
@@ -82,11 +53,11 @@
       
         <tags>
             
+            <tag> 学习 </tag>
+            
             <tag> 写作 </tag>
             
             <tag> 记录 </tag>
-            
-            <tag> 学习 </tag>
             
         </tags>
       
