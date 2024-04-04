@@ -22,21 +22,25 @@
     <meta name="description" content="摘要本文介绍了通过 Python 应用卷积神经网络算法和数字图像处理相关技术实现猫狗识别的方法，并利用 Tkinter 模块编写了猫狗图像识别程序的 GUI。通过多次重复测试，反复训练，得到一个较好的模型，识别正确率达到一个可观的程度。本小组在此过程中学习了卷积神经网络算法的原理，了解了计算机视觉处理图片的过程。 实验原理卷积神经网络卷积神经网络是一类包含卷积计算且具有深度结构的前馈神经网络，是深">
 <meta property="og:type" content="website">
 <meta property="og:title" content="整体设计">
-<meta property="og:url" content="https://luhao200.github.io/wiki/Cat-dog-identification/index.html">
+<meta property="og:url" content="https://luhao200.github.io/wiki/Cat-dog-identification/Cat-dog-identification.html">
 <meta property="og:site_name" content="Zhink">
 <meta property="og:description" content="摘要本文介绍了通过 Python 应用卷积神经网络算法和数字图像处理相关技术实现猫狗识别的方法，并利用 Tkinter 模块编写了猫狗图像识别程序的 GUI。通过多次重复测试，反复训练，得到一个较好的模型，识别正确率达到一个可观的程度。本小组在此过程中学习了卷积神经网络算法的原理，了解了计算机视觉处理图片的过程。 实验原理卷积神经网络卷积神经网络是一类包含卷积计算且具有深度结构的前馈神经网络，是深">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com//photo/Cat-dog-identification.png">
-<meta property="article:published_time" content="2024-03-31T05:35:14.910Z">
-<meta property="article:modified_time" content="2024-03-31T05:34:33.000Z">
+<meta property="article:published_time" content="2023-06-19T09:07:25.000Z">
+<meta property="article:modified_time" content="2024-03-17T14:46:56.000Z">
 <meta property="article:author" content="Zhink">
-<meta property="article:tag" content="博客, 技术分享, 生活分享">
+<meta property="article:tag" content="卷积神经网络">
+<meta property="article:tag" content="计算机视觉">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="图像识别">
+<meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com//photo/Cat-dog-identification.png">
   
   
   
-  <meta name="keywords" content="博客, 技术分享, 生活分享">
+  <meta name="keywords" content=",,,,">
 
   <!-- feed -->
   
@@ -55,7 +59,7 @@
 
 
 
-<div class="l_body s:aa content tech" id="start" layout="page" ><aside class="l_left"><div class="leftbar-container">
+<div class="l_body s:aa content tech" id="start" layout="wiki" ><aside class="l_left"><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><div class="icon"><img no-lazy class="icon" src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/photo/blogset/wiki/Cat-dog-identification.svg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></div><a class="title" href="/wiki/Cat-dog-identification/Cat-dog-identification.html"><div class="main" ff="title">Cat-dog</div><div class="sub normal cap">猫狗识别系统</div><div class="sub hover cap" style="opacity:0"> Designed by Haohao</div></a></div></header>
@@ -68,7 +72,7 @@
 </div>
 <div class="widgets">
 
-<widget class="widget-wrapper post-list"><div class="widget-body fs14"><a class="link" href="/wiki/Cat-dog-identification/Cat-dog-identification.html#start"><span class="toc-text">整体设计</span></a><a class="link active" href="/wiki/Cat-dog-identification/index.html"><span class="toc-text">整体设计</span><svg class="active-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.225 2.225 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.238 2.238 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333C5.636 2 7.758 2 12 2c4.243 0 6.364 0 7.682 1.332C21 4.665 21 6.81 21 11.098" opacity=".5"/><path fill="currentColor" d="M9 5.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5z"/></svg></a></div></widget>
+<widget class="widget-wrapper post-list"><div class="widget-body fs14"><a class="link active" href="/wiki/Cat-dog-identification/Cat-dog-identification.html#start"><span class="toc-text">整体设计</span><svg class="active-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.225 2.225 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.238 2.238 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333C5.636 2 7.758 2 12 2c4.243 0 6.364 0 7.682 1.332C21 4.665 21 6.81 21 11.098" opacity=".5"/><path fill="currentColor" d="M9 5.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5z"/></svg></a><a class="link" href="/wiki/Cat-dog-identification/index.html"><span class="toc-text">整体设计</span></a></div></widget>
 
 <widget class="widget-wrapper post-card"><div class="widget-header dis-select"><span class="name">更多：Python</span></div><div class="widget-body"><a class="item wiki" href="/wiki/Video-GUI/index.html"><span class="title">Video-GUI</span><span class="excerpt">基于Pyqt的简易视频播放器</span></a><a class="item wiki" href="/wiki/TranslateGUI/index.html"><span class="title">TranslateGUI</span><span class="excerpt">基于Pyside6的翻译界面</span></a></div></widget>
 
@@ -85,7 +89,7 @@
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" id="menu" href="/wiki">文档</a><span class="sep"></span><a class="cap breadcrumb" id="proj" href="/wiki/Cat-dog-identification/Cat-dog-identification.html">Cat-dog</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2024-03-31T05:34:33.000Z">2024-03-31</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2024-03-17T14:46:56.000Z">2024-03-17</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -127,7 +131,7 @@
 <h3 id="误差测试"><a href="#误差测试" class="headerlink" title="误差测试"></a>误差测试</h3><p>我们运行程序20次，人工判定程序识别的结果正确性，测出正确率为72.3%。更改学习次数为6，重新训练模型得到正确率为82.1%，更改学习次数为7，重新训练模型得到正确率为85.1%。由此可得，卷积神经网络学习次数越多，图片识别正确率越高。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>因为时间和硬件限制，所以我们训练模型和测试正确率的次数有限。本项目也可以添加卷积层，池化层，和添加学习次数来增加模型精确度。当然测试对象也不限制于猫和狗，如果有其他物体的大数量的测试集（因为猫狗数据集好找，所以只做了猫狗），也可以修改输出层神经元个数，来得到对应的测试程序。最后打包成 exe 文件，得到成品。</p>
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">回顾上一篇</div><a href="/wiki/Cat-dog-identification/Cat-dog-identification.html">整体设计</a></div><div class="item" id="next"></div></section></div>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">接下来阅读</div><a href="/wiki/Cat-dog-identification/index.html">整体设计</a></div></section></div>
 
 
   <div class="related-wrap md-text" id="comments">
