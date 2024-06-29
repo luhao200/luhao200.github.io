@@ -1,0 +1,790 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0" theme-name="Stellar" theme-version="1.27.0">
+  
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>Zhink</title>
+
+  
+    <meta name="description" content="在工作中发现很多同事都还没有使用过GIT，在领导的要求下，给大家做了一次GIT使用培训。如何降低大家的使用门槛和提起大家对GIT的使用兴趣便成了一大难题，难道让大家一开始就用命令行进行操作吗？这显然会劝退很多人（包括我自己）。所幸的是现在有特别多的IDE已经集成了GIT，本篇就主要讲Writerside（Jetbrains家的文本编辑器，体量较小，但是GIT的功能和Jetbrains的其他IDE一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zhink">
+<meta property="og:url" content="https://luhao200.github.io/2024/06/25/GIT%E7%9A%84%E5%9B%BE%E5%BD%A2%E5%8C%96%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="Zhink">
+<meta property="og:description" content="在工作中发现很多同事都还没有使用过GIT，在领导的要求下，给大家做了一次GIT使用培训。如何降低大家的使用门槛和提起大家对GIT的使用兴趣便成了一大难题，难道让大家一开始就用命令行进行操作吗？这显然会劝退很多人（包括我自己）。所幸的是现在有特别多的IDE已经集成了GIT，本篇就主要讲Writerside（Jetbrains家的文本编辑器，体量较小，但是GIT的功能和Jetbrains的其他IDE一">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/rhogz.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/n5ji9.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/2pqd7.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/ilo3b.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/t9vq4.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/juj61.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/oef9h.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/53mfj.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/zr9ip.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/b48yx.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/4874g.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/h6nm4.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/9btva.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/8mtgi.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/5zbgi.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/wvfui.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/6nybd.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/3ew64.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/wnmmo.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/tfku8.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/k7ws8.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/y7cea.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/3m6jo.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/lri1h.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/5xlsp.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/dvbyy.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/02cw0.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/tzlof.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/vmsmv.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/c0mbb.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/ctj1s.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/n1vj1.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/dwbiz.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/uunzu.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/x8krz.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/mwvjf.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/6clz6.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/0hlow.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/eb2xq.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/gs9xg.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/ju3aq.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/7n2jv.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/25ahw.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/lnc4r.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/e5wpd.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/u11xl.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/htgw0.png">
+<meta property="og:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/z7yth.png">
+<meta property="article:published_time" content="2024-06-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-06-29T13:10:13.341Z">
+<meta property="article:author" content="Zhink">
+<meta property="article:tag" content="kw&#x2F;博客">
+<meta property="article:tag" content="status&#x2F;archive">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/rhogz.png">
+  
+  
+  
+  <meta name="keywords" content="kw/博客,status/archive">
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.27.0">
+
+  
+    <link rel="shortcut icon" href="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/photo/blogset/setting/favicon.png">
+  
+
+  
+
+  
+</head>
+<body>
+
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/photo/blogset/setting/avatar.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Zhink</div><div class="sub normal cap">我在。</div><div class="sub hover cap" style="opacity:0"> luhao200.github.io</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"><a class="nav-item active" title="博客" href="/" style="color:#1BCDFC"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item" title="文档" href="/wiki/" style="color:#3DC550"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M14.25 4.48v3.057c0 .111 0 .27.02.406a.936.936 0 0 0 .445.683a.96.96 0 0 0 .783.072c.13-.04.272-.108.378-.159L17 8.005l1.124.534c.106.05.248.119.378.16a.958.958 0 0 0 .783-.073a.936.936 0 0 0 .444-.683c.021-.136.021-.295.021-.406V3.031c.113-.005.224-.01.332-.013C21.154 2.98 22 3.86 22 4.933v11.21c0 1.112-.906 2.01-2.015 2.08c-.97.06-2.108.179-2.985.41c-1.082.286-1.99 1.068-3.373 1.436c-.626.167-1.324.257-1.627.323V5.174c.32-.079 1.382-.203 1.674-.371c.184-.107.377-.216.576-.323m5.478 8.338a.75.75 0 0 1-.546.91l-4 1a.75.75 0 0 1-.364-1.456l4-1a.75.75 0 0 1 .91.546" clip-rule="evenodd"/><path fill="currentColor" d="M18.25 3.151c-.62.073-1.23.18-1.75.336a8.2 8.2 0 0 0-.75.27v3.182l.75-.356l.008-.005a1.13 1.13 0 0 1 .492-.13c.047 0 .094.004.138.01c.175.029.315.1.354.12l.009.005l.749.356V3.647z"/><path fill="currentColor" d="M12 5.214c-.334-.064-1.057-.161-1.718-.339C8.938 4.515 8.05 3.765 7 3.487c-.887-.234-2.041-.352-3.018-.412C2.886 3.007 2 3.9 2 4.998v11.146c0 1.11.906 2.01 2.015 2.079c.97.06 2.108.179 2.985.41c.486.129 1.216.431 1.873.726c1.005.451 2.052.797 3.127 1.034z" opacity=".5"/><path fill="currentColor" d="M4.273 12.818a.75.75 0 0 1 .91-.545l4 1a.75.75 0 1 1-.365 1.455l-4-1a.75.75 0 0 1-.545-.91m.909-4.545a.75.75 0 1 0-.364 1.455l4 1a.75.75 0 0 0 .364-1.455z"/></svg></a><a class="nav-item" title="关于" href="/about/" style="color:#F44336"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="m13.629 20.472l-.542.916c-.483.816-1.69.816-2.174 0l-.542-.916c-.42-.71-.63-1.066-.968-1.262c-.338-.197-.763-.204-1.613-.219c-1.256-.021-2.043-.098-2.703-.372a5 5 0 0 1-2.706-2.706C2 14.995 2 13.83 2 11.5v-1c0-3.273 0-4.91.737-6.112a5 5 0 0 1 1.65-1.651C5.59 2 7.228 2 10.5 2h3c3.273 0 4.91 0 6.113.737a5 5 0 0 1 1.65 1.65C22 5.59 22 7.228 22 10.5v1c0 2.33 0 3.495-.38 4.413a5 5 0 0 1-2.707 2.706c-.66.274-1.447.35-2.703.372c-.85.015-1.275.022-1.613.219c-.338.196-.548.551-.968 1.262" opacity=".5"/><path fill="currentColor" d="M10.99 14.308c-1.327-.978-3.49-2.84-3.49-4.593c0-2.677 2.475-3.677 4.5-1.609c2.025-2.068 4.5-1.068 4.5 1.609c0 1.752-2.163 3.615-3.49 4.593c-.454.335-.681.502-1.01.502c-.329 0-.556-.167-1.01-.502"/></svg></a></nav>
+</div>
+<div class="widgets">
+
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span><a class="cap-action" id="rss" title="Subscribe" href="/atom.xml"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M5 21q-.825 0-1.412-.587T3 19q0-.825.588-1.412T5 17q.825 0 1.413.588T7 19q0 .825-.587 1.413T5 21m13.5 0q-.65 0-1.088-.475T16.9 19.4q-.275-2.425-1.312-4.537T12.9 11.1q-1.65-1.65-3.762-2.687T4.6 7.1q-.65-.075-1.125-.512T3 5.5q0-.65.45-1.062t1.075-.363q3.075.275 5.763 1.563t4.737 3.337q2.05 2.05 3.338 4.738t1.562 5.762q.05.625-.363 1.075T18.5 21m-6 0q-.625 0-1.075-.437T10.85 19.5q-.225-1.225-.787-2.262T8.65 15.35q-.85-.85-1.888-1.412T4.5 13.15q-.625-.125-1.062-.575T3 11.5q0-.65.45-1.075t1.075-.325q1.825.25 3.413 1.063t2.837 2.062q1.25 1.25 2.063 2.838t1.062 3.412q.1.625-.325 1.075T12.5 21"/></svg></a></div><div class="widget-body fs14"><a class="item title" href="/2024/04/16/Tsjflm%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E4%BB%8B/"><span class="title">Tsjflm服务器简介</span></a><a class="item title" href="/2024/04/16/OPPOA9%E7%9A%84%E5%9B%9B%E5%B9%B4%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C/"><span class="title">OPPOA9的四年使用体验</span></a><a class="item title" href="/2024/04/16/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%AD%A6%E4%B9%A0%E8%BF%9B%E7%A8%8B/"><span class="title">数学建模学习进程</span></a></div></widget>
+</div>
+<footer class="footer dis-select"><div class="social-wrap"><a class="social" href="mailto:luhao200@outlook.com" rel="noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/photo/blogset/setting/email.svg"/></a><a class="social" href="https://github.com/luhao200" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/photo/blogset/setting/github.svg"/></a><a class="social" href="https://y.music.163.com/m/user?id=324435957" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/photo/blogset/setting/wangyiyunyinle.svg"/></a><a class="social" href="https://space.bilibili.com/35268099?spm_id_from=333.1007.0.0" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/photo/blogset/setting/bilibilidonghua.svg"/></a><a class="social" href="https://www.zhihu.com/people/qing-cai-bai-yu-tang-88-45" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/photo/blogset/setting/zhihu.svg"/></a><a class="social" href="http://www.coolapk.com/u/2906136" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/photo/blogset/setting/kuan.svg"/></a></div></footer>
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-06-24T16:00:00.000Z">2024-06-25</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-06-29T13:10:13.341Z">2024-06-29</time></span></div></div></div>
+    
+  </div>
+  </div><article class="md-text content"><p>在工作中发现很多同事都还没有使用过GIT，在领导的要求下，给大家做了一次GIT使用培训。如何降低大家的使用门槛和提起大家对GIT的使用兴趣便成了一大难题，难道让大家一开始就用命令行进行操作吗？这显然会劝退很多人（包括我自己）。所幸的是现在有特别多的IDE已经集成了GIT，本篇就主要讲Writerside（Jetbrains家的文本编辑器，体量较小，但是GIT的功能和Jetbrains的其他IDE一样好用）的使用方法，希望对大家入门GIT有所帮助。</p>
+<h2 id="一、Git概述"><a href="#一、Git概述" class="headerlink" title="一、Git概述"></a>一、Git概述</h2><h3 id="何为版本控制"><a href="#何为版本控制" class="headerlink" title="何为版本控制"></a>何为版本控制</h3><ul>
+<li>版本控制软件功能：<ul>
+<li><strong>版本管理</strong>：回退到历史上的任何版本</li>
+<li><strong>共享代码</strong>：团队之间共享代码</li>
+<li>团队合作开发-代码整合：</li>
+</ul>
+</li>
+<li>版本控制是一种记录文件内容变化， 以便将来查阅特定版本修订情况的系统。</li>
+</ul>
+<p>Git是一个开源的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%88%86%E5%B8%83%E5%BC%8F/19276232?fromModule=lemma_inlink">分布式</a>版本控制系统，可以有效、高速地处理从很小到非常大的项目<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/2511538?fromModule=lemma_inlink">版本管理</a>。也是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Linus%20Torvalds/9336769?fromModule=lemma_inlink">Linus Torvalds</a>为了帮助管理<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Linux%E5%86%85%E6%A0%B8/10142820?fromModule=lemma_inlink">Linux内核</a>开发而开发的一个开放源码的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E8%BD%AF%E4%BB%B6/2617766?fromModule=lemma_inlink">版本控制软件</a>。</p>
+<p>当前热门的开源网站Github也是基于此。</p>
+<h3 id="为什么需要版本控制"><a href="#为什么需要版本控制" class="headerlink" title="为什么需要版本控制"></a>为什么需要版本控制</h3><p>在项目开发中，团队协作管理代码和文件是每天必须要做的事情。大家一定会碰到如下几个场景和问题？</p>
+<ol>
+<li>协同修改，多人并行开发修改服务器的文件</li>
+<li>数据备份</li>
+<li>版本管理，权限控制</li>
+<li>如果文件和工程误删了还能找回来吗？</li>
+<li>分支管理 1.0 2.0</li>
+<li>遇到了文件冲突如何解决？</li>
+<li>如何把一些我临时保存的文件不要提交?</li>
+</ol>
+<p>同时，版本管理也很方便的对比版本之间的差异。</p>
+<h3 id="Git有三个分区"><a href="#Git有三个分区" class="headerlink" title="Git有三个分区"></a>Git有三个分区</h3><ul>
+<li>工作区：就是你在电脑里能看到的目录（代码编辑区）。</li>
+<li>暂存区：一般存放在 “.git目录下” 下的index文件中（过渡层，避免误操作）。</li>
+<li>版本库：工作区有一个隐藏目录.git （本地仓库，专门控制版本）。</li>
+</ul>
+<p>另外还有一个<strong>远程仓库</strong>：比如GitHub、Gitee、GitLab上的库。</p>
+<p>他们之间的关系如下：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/rhogz.png" alt="rhogz"></p>
+<p>在工具内是如下分布：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/n5ji9.png" alt="n5ji9"></p>
+<h3 id="Git命令行"><a href="#Git命令行" class="headerlink" title="Git命令行"></a>Git命令行</h3><p>Git默认使用命令行操作，以下是常用命令行。</p>
+<table>
+<thead>
+<tr>
+<th>命令名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git init</td>
+<td>初始化本地库</td>
+</tr>
+<tr>
+<td>git status</td>
+<td>查看本地库状态</td>
+</tr>
+<tr>
+<td>git add 文件名</td>
+<td>添加到暂存区</td>
+</tr>
+<tr>
+<td>git commit -m “日志信息” 文件名</td>
+<td>提交到本地库</td>
+</tr>
+<tr>
+<td>git reflog</td>
+<td>查看历史记录</td>
+</tr>
+<tr>
+<td>git reset –hard 版本号</td>
+<td>版本硬回溯</td>
+</tr>
+<tr>
+<td>git reset –soft 版本号</td>
+<td>版本软回溯</td>
+</tr>
+</tbody></table>
+<h2 id="二、Git工具"><a href="#二、Git工具" class="headerlink" title="二、Git工具"></a>二、Git工具</h2><p>Git可视化工具很多，很多集成开发环境内部也集成了Git功能，根据自己的开发环境进行选择。各种Git可视化工具本质上都是执行Git命令，所以在A工具编辑的版本库放到B工具打开是一样的。如果你使用的代码编辑器比如sourceinsight没有Git功能，可以选择使用TortoiseGit或者Writerside。本次演示使用Writerside进行Git版本管理。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>简述</th>
+<th>图标</th>
+<th>链接</th>
+<th>教程</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Git Bash</td>
+<td>最原始的操作，通过命令行进行版本管理。</td>
+<td><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/2pqd7.png" alt="2pqd7"></td>
+<td><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/ilo3b.png" alt="ilo3b"></td>
+<td><a target="_blank" rel="noopener" href="https://learngitbranching.js.org/">https://learngitbranching.js.org/</a></td>
+</tr>
+<tr>
+<td>TortoiseGit</td>
+<td>TortoiseSVN同一家公司出品，在文件管理器内使用右键进行操作。</td>
+<td><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/t9vq4.png" alt="t9vq4"></td>
+<td><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/juj61.png" alt="juj61"></td>
+<td><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011029104/article/details/131856831?ops_request_misc=&request_id=&biz_id=102&utm_term=GIT%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-4-131856831.nonecase&spm=1018.2226.3001.4187">TortoiseGit</a></td>
+</tr>
+<tr>
+<td>Visual Studio</td>
+<td>Visual Studio内集成</td>
+<td><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/oef9h.png" alt="oef9h"></td>
+<td><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/53mfj.png" alt="53mfj"></td>
+<td></td>
+</tr>
+<tr>
+<td>VScode</td>
+<td>VScode内集成，加上GitGraph等插件</td>
+<td><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/zr9ip.png" alt="zr9ip"></td>
+<td><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/b48yx.png" alt="b48yx"></td>
+<td><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_48024605/article/details/136037857?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522171712740716800182774576%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=171712740716800182774576&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~baidu_landing_v2~default-6-136037857-null-null.142%5Ev100%5Epc_search_result_base8&utm_term=GIT%20VScode&spm=1018.2226.3001.4187">VScode</a></td>
+</tr>
+<tr>
+<td>Jetbrains</td>
+<td>CLion、PyCharm、IDEA等系列集成开发环境。而Writerside为Jetbrains开发的文档编辑器。</td>
+<td><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/4874g.png" alt="4874g"></td>
+<td><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/h6nm4.png" alt="h6nm4"></td>
+<td>软件内部学习教程。</td>
+</tr>
+<tr>
+<td>其他</td>
+<td>一些可视化工具，例如sourceTree等</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="三、基础使用示例"><a href="#三、基础使用示例" class="headerlink" title="三、基础使用示例"></a>三、基础使用示例</h2><h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><p>1.从 <a target="_blank" rel="noopener" href="https://git-scm.com/">Git官网</a> 下载安装包，双击安装包然后一直点击Next安装。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/9btva.png" alt="9btva"></p>
+<p>2.安装完毕后，右击空白处会有Git命令行工具。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/8mtgi.png" alt="8mtgi"></p>
+<p>3.打开Git命令行工具配置个人的用户名称和电子邮件地址：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;test&quot;</span><br><span class="line">git config --global user.email test@foxmail.com</span><br></pre></td></tr></table></figure>
+
+<p>如下图所示：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/5zbgi.png" alt="5zbgi"></p>
+<h3 id="安装Writerside"><a href="#安装Writerside" class="headerlink" title="安装Writerside"></a>安装Writerside</h3><p>1.从 <a target="_blank" rel="noopener" href="https://www.jetbrains.com/zh-cn/writerside/">Writerside官网</a> 下载安装包，双击安装包然后一直点击下一步安装。</p>
+<p>安装的时候注意将这两项选上：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/wvfui.png" alt="wvfui"></p>
+<p>2.双击安装好的Writerside桌面快捷方式，安装中文语言包：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/6nybd.png" alt="6nybd"></p>
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><h4 id="使用Writerside打开工程"><a href="#使用Writerside打开工程" class="headerlink" title="使用Writerside打开工程"></a>使用Writerside打开工程</h4><p>1.在工程目录下面右击空白处，使用Writerside打开：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/3ew64.png" alt="3ew64"></p>
+<p>2.信任项目</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/wnmmo.png" alt="wnmmo"></p>
+<p>3.界面布局</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/tfku8.png" alt="tfku8"></p>
+<h4 id="1-创建-gitignore"><a href="#1-创建-gitignore" class="headerlink" title="1.创建.gitignore"></a>1.创建.gitignore</h4><p>在本项目文件夹下面创建纯文本文件，并重命名为.gitignore。里面的内容即是忽略提交到项目库的文件夹或者文件。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/k7ws8.png" alt="k7ws8"></p>
+<h4 id="2-创建Git库：git-init"><a href="#2-创建Git库：git-init" class="headerlink" title="2.创建Git库：git init"></a>2.创建Git库：git init</h4><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/y7cea.png" alt="y7cea"></p>
+<p>创建完成后本文件目录下会出现一个.git的隐藏文件夹，即版本库。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/3m6jo.png" alt="3m6jo"></p>
+<h4 id="3-添加文件：git-add"><a href="#3-添加文件：git-add" class="headerlink" title="3.添加文件：git add"></a>3.添加文件：git add</h4><p>点击所示按钮，红框即是相对于前一个版本有更改的文件，因为是新建仓库，所以所有文件都显示在此（除了.gitignore里面包含的内容）。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/lri1h.png" alt="lri1h"></p>
+<p>点击小眼睛，再点击目录，更改文件目录则以文件夹形式展现。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/5xlsp.png" alt="5xlsp"></p>
+<p>选择此次需要添加进版本库的文件。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/dvbyy.png" alt="dvbyy"></p>
+<h4 id="4-提交文件：git-commit-m-“新建项目”"><a href="#4-提交文件：git-commit-m-“新建项目”" class="headerlink" title="4.提交文件：git commit -m “新建项目”"></a>4.提交文件：git commit -m “新建项目”</h4><p>编辑提交消息，点击提交：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/02cw0.png" alt="02cw0"></p>
+<h4 id="5-一次版本提交完成，观察现在的界面"><a href="#5-一次版本提交完成，观察现在的界面" class="headerlink" title="5.一次版本提交完成，观察现在的界面"></a>5.一次版本提交完成，观察现在的界面</h4><ol>
+<li>更改文件目录下面的文件消失了（因为此时工作区文件与版本库文件相同）。</li>
+<li>版本库信息展示在此处。</li>
+<li>这一个版本相对于前一个版本的所有变化的文件。</li>
+<li>版本的相关信息：提交者，时间，哈希值等。</li>
+</ol>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/tzlof.png" alt="tzlof"></p>
+<h4 id="6-编辑代码"><a href="#6-编辑代码" class="headerlink" title="6.编辑代码"></a>6.编辑代码</h4><p>缓存区和工作区均会显示与已提交版本差异。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/vmsmv.png" alt="vmsmv"></p>
+<h4 id="7-查看差异：git-diff"><a href="#7-查看差异：git-diff" class="headerlink" title="7.查看差异：git diff"></a>7.查看差异：git diff</h4><p>双击缓存区文件即可对比工作区文件与版本库文件差异。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/c0mbb.png" alt="c0mbb"></p>
+<h4 id="8-提交"><a href="#8-提交" class="headerlink" title="8.提交"></a>8.提交</h4><h4 id="9-回溯版本"><a href="#9-回溯版本" class="headerlink" title="9.回溯版本"></a>9.回溯版本</h4><p>1.回溯到已提交版本库。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/ctj1s.png" alt="ctj1s"></p>
+<p>2.回溯到指定版本。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/n1vj1.png" alt="n1vj1"></p>
+<p>软回退：文件不会更改，差异将暂存以进行提交。（git reset –soft 版本号</p>
+<p>硬回退：文件将还原为所选提交的状态。（git reset –hard 版本号</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/dwbiz.png" alt="dwbiz"></p>
+<p>3.与现有版本进行比较修改。</p>
+<p>右击指定版本，选择与本地进行比较，即可显示指定版本与当前文件的差异。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/uunzu.png" alt="uunzu"></p>
+<p>1.双击差异文件即可显示具体差异。</p>
+<p>2.点击红框2标出的按钮来选择接受指定版本文件与当前文件的差异。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/x8krz.png" alt="x8krz"></p>
+<p>至此，基础使用讲完，足够个人进行版本管理了。</p>
+<h2 id="四、Git远程与分支"><a href="#四、Git远程与分支" class="headerlink" title="四、Git远程与分支"></a>四、Git远程与分支</h2><p><strong>分支就相当于地址。</strong></p>
+<p>点击左上角按钮即可显示推送拉取和新建分支等按钮。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/mwvjf.png" alt="mwvjf"></p>
+<h3 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h3><p>点击新建分支即可在此节点新建分支。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/6clz6.png" alt="6clz6"></p>
+<p>HEAD即当前位置的指针。</p>
+<h3 id="开发D口"><a href="#开发D口" class="headerlink" title="开发D口"></a>开发D口</h3><p>新增关于D的代码并提交。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/0hlow.png" alt="0hlow"></p>
+<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><p>右击分支所在版本，点击签出，选择签出的具体分支。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/eb2xq.png" alt="eb2xq"></p>
+<p>可从图中看出，左上角变到对应分支，而图中的代码也恢复到对应版本。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/gs9xg.png" alt="gs9xg"></p>
+<h3 id="开发B口"><a href="#开发B口" class="headerlink" title="开发B口"></a>开发B口</h3><p>1.用切换分支操作，切换到开发GPIOB分支。</p>
+<p>2.修改代码，进行提交，此处提交了两个版本。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/ju3aq.png" alt="ju3aq"></p>
+<h3 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h3><p>假设D口和B口都已经开发完了，我们需要将开发GPIOB分支、开发GPIOD分支合并到master主分支上面。</p>
+<p>1.首先切换到master分支。</p>
+<p>2.右击开发GPIOB分支，选择将‘开发GPIOB分支’合并到‘master’中。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/7n2jv.png" alt="7n2jv"></p>
+<p>结果如下：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/25ahw.png" alt="25ahw"></p>
+<p>对开发GPIOD分支做同样操作，因为开发D和B时是在文件同一处修改，所以有冲突。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/lnc4r.png" alt="lnc4r"></p>
+<p>点击合并，则打开冲突窗口，左窗口为master分支内容，右窗口开发D分支内容，通过点击红框按钮来选择接受哪边的内容。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/e5wpd.png" alt="e5wpd"></p>
+<p>此处我们两边的代码都需要，我们先点击上图红框按钮，变成如下图。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/u11xl.png" alt="u11xl"></p>
+<p>再点击右边红框按钮，接受开发D分支的代码，变成下图。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/htgw0.png" alt="htgw0"></p>
+<p>点击应用就结束合并了。</p>
+<p>由下图可看出，代码都已合并。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://sandox-1304793847.cos.ap-chongqing.myqcloud.com/z7yth.png" alt="z7yth"></p>
+<h2 id="五、Git使用注意"><a href="#五、Git使用注意" class="headerlink" title="五、Git使用注意"></a>五、Git使用注意</h2><p>1.从以备份为目的提交版本到逐渐养成以开发功能提交版本。</p>
+<p>2.规范提交信息。</p>
+<h2 id="六、拓展"><a href="#六、拓展" class="headerlink" title="六、拓展"></a>六、拓展</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/touo-rygtz0tG6y8NKw65A">天天用Git，分支开发你怎么弄的？</a></p>
+
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/04/16/Tsjflm%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E4%BB%8B/">Tsjflm服务器简介</a></div></section></div>
+
+
+
+
+  <div class="related-wrap md-text" id="comments">
+    <section class='header cmt-title cap theme'>
+      <p>快来参与讨论吧~</p>
+
+    </section>
+    <section class='body cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align:middle;fill:currentColor;overflow:hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="luhao200/luhao200.github.io" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </section>
+  </div>
+
+
+
+<footer class="page-footer footnote"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs15">博客</span><a href="/">近期</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs15">项目</span><a href="/wiki/Video-GUI/Video-GUI.html">Video-GUI</a><a href="/wiki/Cat-dog-identification/Cat-dog-identification.html">Cat-dog-identification</a><a href="/wiki/Laser-Ranging-system/Laser-Ranging-system.html">Laser-Ranging-system</a></div><div class="sitemap-group"><span class="fs15">友链</span><a target="_blank" rel="noopener" href="https://xaoxuu.com/">XAOXUU</a></div><div class="sitemap-group"><span class="fs15">更多</span><a href="/about/">关于本站</a><a target="_blank" rel="noopener" href="https://zhinklh.gitee.io/">Gitee站点</a><a href="https://luhao200.github.io/">Github站点</a></div></div><div class="text"></div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Git%E6%A6%82%E8%BF%B0"><span class="toc-text">一、Git概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%95%E4%B8%BA%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="toc-text">何为版本控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="toc-text">为什么需要版本控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git%E6%9C%89%E4%B8%89%E4%B8%AA%E5%88%86%E5%8C%BA"><span class="toc-text">Git有三个分区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git%E5%91%BD%E4%BB%A4%E8%A1%8C"><span class="toc-text">Git命令行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Git%E5%B7%A5%E5%85%B7"><span class="toc-text">二、Git工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="toc-text">三、基础使用示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Git"><span class="toc-text">安装Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Writerside"><span class="toc-text">安装Writerside</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="toc-text">使用示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Writerside%E6%89%93%E5%BC%80%E5%B7%A5%E7%A8%8B"><span class="toc-text">使用Writerside打开工程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA-gitignore"><span class="toc-text">1.创建.gitignore</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BAGit%E5%BA%93%EF%BC%9Agit-init"><span class="toc-text">2.创建Git库：git init</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6%EF%BC%9Agit-add"><span class="toc-text">3.添加文件：git add</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%8F%90%E4%BA%A4%E6%96%87%E4%BB%B6%EF%BC%9Agit-commit-m-%E2%80%9C%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE%E2%80%9D"><span class="toc-text">4.提交文件：git commit -m “新建项目”</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%B8%80%E6%AC%A1%E7%89%88%E6%9C%AC%E6%8F%90%E4%BA%A4%E5%AE%8C%E6%88%90%EF%BC%8C%E8%A7%82%E5%AF%9F%E7%8E%B0%E5%9C%A8%E7%9A%84%E7%95%8C%E9%9D%A2"><span class="toc-text">5.一次版本提交完成，观察现在的界面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E7%BC%96%E8%BE%91%E4%BB%A3%E7%A0%81"><span class="toc-text">6.编辑代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E6%9F%A5%E7%9C%8B%E5%B7%AE%E5%BC%82%EF%BC%9Agit-diff"><span class="toc-text">7.查看差异：git diff</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-%E6%8F%90%E4%BA%A4"><span class="toc-text">8.提交</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-%E5%9B%9E%E6%BA%AF%E7%89%88%E6%9C%AC"><span class="toc-text">9.回溯版本</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Git%E8%BF%9C%E7%A8%8B%E4%B8%8E%E5%88%86%E6%94%AF"><span class="toc-text">四、Git远程与分支</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E5%88%86%E6%94%AF"><span class="toc-text">新建分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%8F%91D%E5%8F%A3"><span class="toc-text">开发D口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF"><span class="toc-text">切换分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%8F%91B%E5%8F%A3"><span class="toc-text">开发B口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF"><span class="toc-text">合并分支</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81Git%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F"><span class="toc-text">五、Git使用注意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%8B%93%E5%B1%95"><span class="toc-text">六、拓展</span></a></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+<script type="text/javascript">
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+  };
+  const deps = {
+    jquery: `https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js`,
+    marked: `https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+    
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      let retryTimes = 3;
+      utils.onLoading(el);
+      function req() {
+        return new Promise((resolve, reject) => {
+          let status = 0; // 0 等待 1 完成 2 超时
+          let timer = setTimeout(() => {
+            if (status === 0) {
+              status = 2;
+              timer = null;
+              reject('请求超时');
+              if (retryTimes == 0) {
+                onFailure();
+              }
+            }
+          }, 5000);
+          fetch(url).then(function(response) {
+            if (status !== 2) {
+              clearTimeout(timer);
+              resolve(response);
+              timer = null;
+              status = 1;
+            }
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          }).then(function(data) {
+            retryTimes = 0;
+            utils.onLoadSuccess(el);
+            callback(data);
+          }).catch(function(error) {
+            if (retryTimes > 0) {
+              retryTimes -= 1;
+              setTimeout(() => {
+                req();
+              }, 5000);
+            } else {
+              utils.onLoadFailure(el);
+              onFailure();
+            }
+          });
+        });
+      }
+      req();
+    },
+  };
+</script>
+
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.27.0" async></script>
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.error(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"></script><script defer src="https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+</script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css`,
+    js: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js`
+  };
+  var selector = '[data-fancybox]:not(.error)';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const els = document.getElementsByClassName('ds-memos');
+    if (els != undefined && els.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || null
+        }
+      });
+    })
+  }
+</script><script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          loop: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script><script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>
